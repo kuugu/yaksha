@@ -1,7 +1,7 @@
-async function getDataFromJson() {
+async function getDataFromJson(file_name) {
 
     try {
-        const response = await fetch('table.json')
+        const response = await fetch(file_name)
 
         if (!response.ok) {
             throw new Error(`${response.status}`)
@@ -17,27 +17,41 @@ async function getDataFromJson() {
     }
 }
 
-let table_data = getDataFromJson(); 
+let table_data = getDataFromJson('table_data.json');
+let table_header = getDataFromJson('table_header.json'); 
 
-table_data.then(
-    (value) => {
-        const doc = document.getElementById("table")
-        let header = document.createElement('tr') 
+Promise.all([table_header, table_data]).then(
+    values => {
+        let header = values[0]; 
+        let data = values[1]; 
 
-        Object.keys(value[0]).forEach(element => {
+        // update the table header 
+        let header_tr = document.createElement('tr') 
+
+        header.forEach(element => {
             let th = document.createElement('th') 
-            th.textContent = element; 
-            header.appendChild(th); 
+            th.textContent = element[0]; 
+            header_tr.appendChild(th); 
         }) 
 
-        document.getElementById("table").appendChild(header); 
+        document.getElementById("table").appendChild(header_tr); 
 
-        value.forEach(element => {
+        // update the table data 
+        data.forEach(element => {
             let tr = document.createElement('tr'); 
 
-            for (let elem in element) {
+            for (let i=0; i<element.length; i++) {
                 let td = document.createElement('td')
-                td.textContent = element[elem]; 
+
+                if (header[i][1] === 'link') {
+                    let a = document.createElement('a')
+                    a.href = element[i]; 
+                    a.textContent = element[i];
+                    td.appendChild(a);  
+                } else {
+                    td.textContent = element[i]; 
+                }
+                
                 tr.appendChild(td);
             }
 
