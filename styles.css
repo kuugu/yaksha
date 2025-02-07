@@ -1,0 +1,44 @@
+/* Style the table */
+table {
+    width: 100%;
+    border-collapse: collapse;  /* Collapses the borders */
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Style the table headers */
+th {
+    background-color: #4CAF50;  /* Green background for header */
+    color: white;
+    text-align: left;
+    padding: 12px 15px;
+}
+
+/* Style the table data cells */
+td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;  /* Adds a border at the bottom of each row */
+}
+
+/* Add alternating row colors */
+tr:nth-child(even) {
+    background-color: #f2f2f2;  /* Light grey background for even rows */
+}
+
+tr:hover {
+    background-color: #ddd;  /* Slightly darker grey on row hover */
+}
+
+/* Add borders to the table */
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+/* Optional: Style for the table container */
+.table-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: auto;  /* Adds horizontal scrolling if the table overflows */
+}
