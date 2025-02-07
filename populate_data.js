@@ -1,5 +1,3 @@
-console.log('hello1')
-
 async function getDataFromJson() {
 
     try {
@@ -20,9 +18,6 @@ async function getDataFromJson() {
 }
 
 let table_data = getDataFromJson(); 
-console.log('hello2')
-console.log(table_data)
-console.log('hello2')
 
 table_data.then(
     (value) => {
@@ -40,8 +35,6 @@ table_data.then(
         value.forEach(element => {
             let tr = document.createElement('tr'); 
 
-            // console.log(element);
-
             for (let elem in element) {
                 let td = document.createElement('td')
                 td.textContent = element[elem]; 
@@ -52,4 +45,3 @@ table_data.then(
         });
     }
 )
-console.log('hello2')
