@@ -1,6 +1,6 @@
 /* Style the table */
 table {
-    width: 100%;
+    width: 80%;
     border-collapse: collapse;  /* Collapses the borders */
     margin: 20px 0;
     font-family: Arial, sans-serif;
@@ -13,6 +13,7 @@ th {
     color: white;
     text-align: left;
     padding: 12px 15px;
+    font-size: large;
 }
 
 /* Style the table data cells */
@@ -20,6 +21,7 @@ td {
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;  /* Adds a border at the bottom of each row */
+    font-size: medium; 
 }
 
 /* Add alternating row colors */
@@ -41,11 +43,6 @@ table, th, td {
     max-width: 1200px;
     margin: 0 auto;
     overflow-x: auto;  /* Adds horizontal scrolling if the table overflows */
-}
-
-input.center {
-    margin: auto; 
-    width: 50%; 
 }
 
 h1 { font-family: Andale Mono, AndaleMono, monospace; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } 

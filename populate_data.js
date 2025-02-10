@@ -84,17 +84,17 @@ Promise.all([table_header, table_data]).then(
                     let td, tag_a; 
                     
                     // prasanga 
-                    td = document.createElement('th'); 
+                    td = document.createElement('td'); 
                     td.textContent = data[i]['prasanga'];
                     tr.appendChild(td); 
                     
                     // kavi 
-                    td = document.createElement('th'); 
+                    td = document.createElement('td'); 
                     td.textContent = data[i]['kavi'];
                     tr.appendChild(td); 
 
                     // prathilink 
-                    td = document.createElement('th'); 
+                    td = document.createElement('td'); 
                     if (data[i]['prathi_fileid'] != '') {
                         tag_a = document.createElement('a'); 
                         tag_a.href = data[i]['prathilink']; 
@@ -106,12 +106,12 @@ Promise.all([table_header, table_data]).then(
                     tr.appendChild(td); 
 
                     // contributor 
-                    td = document.createElement('th'); 
+                    td = document.createElement('td'); 
                     td.textContent = data[i]['contributor'];
                     tr.appendChild(td); 
                     
                     // koshalink 
-                    td = document.createElement('th'); 
+                    td = document.createElement('td'); 
                     if (data[i]['kosha_fileid'] != '') {
                         tag_a = document.createElement('a'); 
                         tag_a.href = data[i]['koshalink']; 
@@ -128,27 +128,5 @@ Promise.all([table_header, table_data]).then(
                 }
             }
         })
-
-        // // update the table data 
-        // data.forEach(element => {
-        //     let tr = document.createElement('tr'); 
-
-        //     for (let i=0; i<element.length; i++) {
-        //         let td = document.createElement('td')
-
-        //         if (header[i][1] === 'link') {
-        //             let a = document.createElement('a')
-        //             a.href = element[i]; 
-        //             a.textContent = element[i];
-        //             td.appendChild(a);  
-        //         } else {
-        //             td.textContent = element[i]; 
-        //         }
-                
-        //         tr.appendChild(td);
-        //     }
-
-        //     document.getElementById("table").appendChild(tr) 
-        // });
     }
 )
