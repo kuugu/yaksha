@@ -30,7 +30,7 @@ Promise.all([table_header, table_data]).then(
 
         // search 
         search_bar.addEventListener('input', () => {
-            const search_text = search_bar.value; 
+            const search_text = search_bar.value.toLowerCase(); 
             
             if (search_text.length >= 2) {
                 search_output = [] 

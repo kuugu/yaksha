@@ -43,6 +43,10 @@ table, th, td {
     overflow-x: auto;  /* Adds horizontal scrolling if the table overflows */
 }
 
+input.center {
+    margin: auto; 
+    width: 50%; 
+}
 
 h1 { font-family: Andale Mono, AndaleMono, monospace; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } 
 h3 { font-family: Andale Mono, AndaleMono, monospace; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } 
