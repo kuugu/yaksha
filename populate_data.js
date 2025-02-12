@@ -21,7 +21,6 @@ let table_data = getDataFromJson('table_data.json');
 let table_header = getDataFromJson('table_header.json'); 
 
 const search_bar = document.getElementById('search_bar'); 
-const output = document.getElementById('output'); 
 
 Promise.all([table_header, table_data]).then(
     values => {
@@ -33,40 +32,7 @@ Promise.all([table_header, table_data]).then(
             const search_text = search_bar.value.toLowerCase(); 
             
             if (search_text.length >= 2) {
-                search_output = [] 
-
-                document.getElementById("table").replaceChildren(); 
-
-                // update the table header 
-                let header_tr = document.createElement('tr') 
-                let th; 
-                
-                // prasanga 
-                th = document.createElement('th'); 
-                th.textContent = 'ಪ್ರಸಂಗ';
-                header_tr.appendChild(th); 
-                
-                // kavi 
-                th = document.createElement('th'); 
-                th.textContent = 'ಕವಿ'; 
-                header_tr.appendChild(th); 
-
-                // prathilink 
-                th = document.createElement('th'); 
-                th.textContent = 'ಪ್ರತಿ'; 
-                header_tr.appendChild(th); 
-
-                // contributor 
-                th = document.createElement('th'); 
-                th.textContent = 'ಕೊಡುಗೆದಾರ'; 
-                header_tr.appendChild(th); 
-                
-                // koshalink 
-                th = document.createElement('th'); 
-                th.textContent = 'ಕೋಶ'; 
-                header_tr.appendChild(th); 
-
-                document.getElementById("table").appendChild(header_tr); 
+                document.getElementById('search_output').replaceChildren(); 
 
                 for (let i=0; i<data.length; i++) {
                     if (data[i]['contributor'].includes(search_text) 
@@ -78,52 +44,64 @@ Promise.all([table_header, table_data]).then(
                         || data[i]['kavi_en'].includes(search_text)
                         || data[i]['prasanga_en'].includes(search_text)
                         || data[i]['publisher_en'].includes(search_text) 
-                ) {
+                    ) {
+                        let search_elem = document.createElement('div'); 
+                        search_elem.className = 'search_elem';  
 
-                    let tr = document.createElement('tr'); 
-                    let td, tag_a; 
-                    
-                    // prasanga 
-                    td = document.createElement('td'); 
-                    td.textContent = data[i]['prasanga'];
-                    tr.appendChild(td); 
-                    
-                    // kavi 
-                    td = document.createElement('td'); 
-                    td.textContent = data[i]['kavi'];
-                    tr.appendChild(td); 
+                        // construct the search output 
 
-                    // prathilink 
-                    td = document.createElement('td'); 
-                    if (data[i]['prathi_fileid'] != '') {
-                        tag_a = document.createElement('a'); 
-                        tag_a.href = data[i]['prathilink']; 
-                        tag_a.textContent = data[i]['prathi_dwnldstatus'];
-                        td.appendChild(tag_a); 
-                    } else {
-                        td.textContent = data[i]['prathi_dwnldstatus']; 
-                    }
-                    tr.appendChild(td); 
+                        // prasanga 
+                        let prasanga = document.createElement('div'); 
+                        prasanga.className = 'search_prasanga'; 
+                        prasanga.textContent += data[i]['prasanga']; 
+                        search_elem.appendChild(prasanga); 
 
-                    // contributor 
-                    td = document.createElement('td'); 
-                    td.textContent = data[i]['contributor'];
-                    tr.appendChild(td); 
-                    
-                    // koshalink 
-                    td = document.createElement('td'); 
-                    if (data[i]['kosha_fileid'] != '') {
-                        tag_a = document.createElement('a'); 
-                        tag_a.href = data[i]['koshalink']; 
-                        tag_a.textContent = data[i]['kosha_dwnldstatus'];
-                        td.appendChild(tag_a); 
-                    } else {
-                        td.textContent = data[i]['kosha_dwnldstatus']; 
-                    }
-                    tr.appendChild(td); 
+                        // kavi 
+                        let kavi = document.createElement('div'); 
+                        kavi.className = 'search_kavi'; 
+                        kavi.textContent = 'ಕವಿ: ';
+                        kavi.textContent += data[i]['kavi']; 
+                        search_elem.appendChild(kavi); 
 
-                    document.getElementById("table").appendChild(tr) 
+                        // prathi & koshalink  
+                        let links = document.createElement('div');  
+                        links.id = 'remove_later'; 
 
+                        links.textContent = 'ಪ್ರತಿ: '; 
+                        if (data[i]['prathi_fileid'] != '') {
+                            let tag_a = document.createElement('a'); 
+                            tag_a.href = data[i]['prathilink']; 
+                            tag_a.textContent = data[i]['prathi_dwnldstatus'];
+                            links.appendChild(tag_a); 
+                        } else {
+                            links.textContent += data[i]['prathi_dwnldstatus']; 
+                        }
+
+                        links.innerHTML += '  ';
+                        links.innerHTML += 'ಯಕ್ಷವಾಹಿನಿ ಕೋಶ: '; 
+                        if (data[i]['kosha_fileid'] != '') {
+                            let tag_a = document.createElement('a'); 
+                            tag_a.href = data[i]['koshalink']; 
+                            tag_a.textContent = data[i]['kosha_dwnldstatus'];
+                            links.appendChild(tag_a); 
+                        } else {
+                            links.innerHTML += data[i]['kosha_dwnldstatus']; 
+                        }
+                        search_elem.appendChild(links); 
+
+                        // publisher 
+                        let publisher = document.createElement('div'); 
+                        publisher.textContent = 'ಪ್ರಕಾಶಕರು: ';
+                        publisher.textContent += data[i]['publisher']; 
+                        search_elem.appendChild(publisher); 
+
+                        // contributor 
+                        let contributor = document.createElement('div'); 
+                        contributor.textContent = 'ಕೊಡುಗೆದಾರ: ';
+                        contributor.textContent += data[i]['contributor']; 
+                        search_elem.appendChild(contributor); 
+
+                        document.getElementById('search_output').appendChild(search_elem); 
                     }   
                 }
             }
