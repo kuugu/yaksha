@@ -21,11 +21,20 @@ let table_data = getDataFromJson('table_data.json');
 let table_header = getDataFromJson('table_header.json'); 
 
 const search_bar = document.getElementById('search_bar'); 
+const xbutton = document.getElementById('xbutton'); 
 
 Promise.all([table_header, table_data]).then(
     values => {
         let header = values[0]; 
         let data = values[1]; 
+
+        // clear results 
+        xbutton.addEventListener("click", () => {
+            search_bar.value = ""; 
+            document.getElementById('search_output').replaceChildren(); 
+
+        })
+        
 
         // search 
         search_bar.addEventListener('input', () => {
