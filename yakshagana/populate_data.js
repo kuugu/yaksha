@@ -34,7 +34,6 @@ Promise.all([table_header, table_data]).then(
             document.getElementById('search_output').replaceChildren(); 
 
         })
-        
 
         // search 
         search_bar.addEventListener('input', () => {
@@ -61,8 +60,15 @@ Promise.all([table_header, table_data]).then(
 
                         // prasanga 
                         let prasanga = document.createElement('div'); 
-                        prasanga.className = 'search_prasanga'; 
-                        prasanga.textContent += data[i]['prasanga']; 
+                        prasanga.className = 'search_prasanga';  
+                        if (data[i]['prathi_fileid'] != '') {
+                            let tag_a = document.createElement('a'); 
+                            tag_a.href = data[i]['prathilink']; 
+                            tag_a.textContent = data[i]['prasanga']; 
+                            prasanga.appendChild(tag_a); 
+                        } else {
+                            prasanga.textContent = data[i]['prasanga']; 
+                        }
                         search_elem.appendChild(prasanga); 
 
                         // kavi 
@@ -74,19 +80,6 @@ Promise.all([table_header, table_data]).then(
 
                         // prathi & koshalink  
                         let links = document.createElement('div');  
-                        links.id = 'remove_later'; 
-
-                        links.textContent = 'ಪ್ರತಿ: '; 
-                        if (data[i]['prathi_fileid'] != '') {
-                            let tag_a = document.createElement('a'); 
-                            tag_a.href = data[i]['prathilink']; 
-                            tag_a.textContent = data[i]['prathi_dwnldstatus'];
-                            links.appendChild(tag_a); 
-                        } else {
-                            links.textContent += data[i]['prathi_dwnldstatus']; 
-                        }
-
-                        links.innerHTML += '  ';
                         links.innerHTML += 'ಯಕ್ಷವಾಹಿನಿ ಕೋಶ: '; 
                         if (data[i]['kosha_fileid'] != '') {
                             let tag_a = document.createElement('a'); 
