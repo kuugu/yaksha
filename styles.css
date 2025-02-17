@@ -20,6 +20,8 @@ div.search_elem {
     margin: 10px;
     padding: 10px; 
     width: 50%; 
+    border: 1px grey;
+    border-style: solid; 
     border-radius: 10px;
     /* height: 20px;  */
 }
