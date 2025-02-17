@@ -43,16 +43,30 @@ Promise.all([table_header, table_data]).then(
                 document.getElementById('search_output').replaceChildren(); 
 
                 for (let i=0; i<data.length; i++) {
-                    if (data[i]['contributor'].includes(search_text) 
-                        || data[i]['dateadded'].includes(search_text)
-                        || data[i]['kavi'].includes(search_text)
-                        || data[i]['prasanga'].includes(search_text)
-                        || data[i]['publisher'].includes(search_text)
-                        || data[i]['contributor_en'].includes(search_text)
-                        || data[i]['kavi_en'].includes(search_text)
-                        || data[i]['prasanga_en'].includes(search_text)
-                        || data[i]['publisher_en'].includes(search_text) 
-                    ) {
+                    let search_match = false; 
+
+                    let search_match_contributor = data[i]['contributor'].indexOf(search_text);  
+                    let search_match_dateadded = data[i]['dateadded'].indexOf(search_text); 
+                    let search_match_kavi = data[i]['kavi'].indexOf(search_text); 
+                    let search_match_prasanga = data[i]['prasanga'].indexOf(search_text); 
+                    let search_match_publisher = data[i]['publisher'].indexOf(search_text); 
+                    let search_match_contributor_en = data[i]['contributor_en'].indexOf(search_text); 
+                    let search_match_kavi_en = data[i]['kavi_en'].indexOf(search_text); 
+                    let search_match_prasanga_en = data[i]['prasanga_en'].indexOf(search_text); 
+                    let search_match_publisher_en = data[i]['publisher_en'].indexOf(search_text); 
+
+                    search_match = ((search_match_contributor >= 0) 
+                                 || (search_match_dateadded >= 0)
+                                 || (search_match_kavi >= 0)
+                                 || (search_match_prasanga >= 0)
+                                 || (search_match_publisher >= 0)
+                                 || (search_match_contributor_en >= 0)
+                                 || (search_match_kavi_en >= 0)
+                                 || (search_match_prasanga_en >= 0)
+                                 || (search_match_publisher_en >= 0)
+                    ); 
+
+                    if (search_match) {
                         let search_elem = document.createElement('div'); 
                         search_elem.className = 'search_elem';  
 
