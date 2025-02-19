@@ -1,4 +1,4 @@
-async function getDataFromJson(file_name) {
+async function getDataFromJson(file_name: string) {
 
     try {
         const response = await fetch(file_name)
@@ -25,22 +25,21 @@ const xbutton = document.getElementById('xbutton');
 
 Promise.all([table_header, table_data]).then(
     values => {
-        let header = values[0]; 
         let data = values[1]; 
 
         // clear results 
-        xbutton.addEventListener("click", () => {
+        xbutton!.addEventListener("click", () => {
             (<HTMLInputElement>search_bar).value = ""; 
-            document.getElementById('search_output').replaceChildren(); 
+            document.getElementById('search_output')!.replaceChildren(); 
 
         })
 
         // search 
-        search_bar.addEventListener('input', () => {
+        search_bar!.addEventListener('input', () => {
             const search_text = (<HTMLInputElement>search_bar).value.toLowerCase(); 
             
             if (search_text.length >= 2) {
-                document.getElementById('search_output').replaceChildren(); 
+                document.getElementById('search_output')!.replaceChildren(); 
 
                 for (let i=0; i<data.length; i++) {
                     let search_match = false; 
@@ -117,7 +116,7 @@ Promise.all([table_header, table_data]).then(
                         contributor.textContent += data[i]['contributor']; 
                         search_elem.appendChild(contributor); 
 
-                        document.getElementById('search_output').appendChild(search_elem); 
+                        document.getElementById('search_output')!.appendChild(search_elem); 
                     }   
                 }
             }

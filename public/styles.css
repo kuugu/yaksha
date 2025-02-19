@@ -23,6 +23,7 @@ div.search_elem {
     border: 1px grey;
     border-style: solid; 
     border-radius: 10px;
+    background-color: rgb(255, 246, 237);
     /* height: 20px;  */
 }
 
