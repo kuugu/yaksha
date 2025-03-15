@@ -1,5 +1,4 @@
 async function getDataFromJson(file_name: string) {
-
     try {
         const response = await fetch(file_name)
 
@@ -90,19 +89,6 @@ Promise.all([table_header, table_data]).then(
                         kavi.textContent = 'ಕವಿ: ';
                         kavi.textContent += data[i]['kavi']; 
                         search_elem.appendChild(kavi); 
-
-                        // prathi & koshalink  
-                        let links = document.createElement('div');  
-                        links.innerHTML += 'ಯಕ್ಷವಾಹಿನಿ ಕೋಶ: '; 
-                        if (data[i]['kosha_fileid'] != '') {
-                            let tag_a = document.createElement('a'); 
-                            tag_a.href = data[i]['koshalink']; 
-                            tag_a.textContent = data[i]['kosha_dwnldstatus'];
-                            links.appendChild(tag_a); 
-                        } else {
-                            links.innerHTML += data[i]['kosha_dwnldstatus']; 
-                        }
-                        search_elem.appendChild(links); 
 
                         // publisher 
                         let publisher = document.createElement('div'); 
