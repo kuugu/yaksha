@@ -113,7 +113,8 @@ function populate_search(data: any[]) {
 }
 
 function add_search_results(data: any[]) {
-    console.log("reached add_search_results", search_output_child.length); 
+    console.log("reached add_search_results", search_output_child.length);
+    console.log(data.length) 
     for (let i=51; i<search_output_child.length; i++) {
         document.getElementById('search_output')!.appendChild(search_output_child[i]); 
     }
