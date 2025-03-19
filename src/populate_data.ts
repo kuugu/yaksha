@@ -16,6 +16,8 @@ async function getDataFromJson(file_name: string) {
     }
 }
 
+const SEARCH_DISPLAY_LIMIT = 20; 
+
 let table_data = getDataFromJson('table_data.json');
 
 const xbutton = document.getElementById('xbutton'); 
@@ -29,6 +31,7 @@ xbutton!.addEventListener("click", () => {
 }); 
 
 let search_output_child: any[] = []; 
+let search_output_displayed_cnt: number = 0; 
 
 function populate_search(data: any[]) {
     // search 
@@ -102,22 +105,22 @@ function populate_search(data: any[]) {
                     search_elem.appendChild(contributor); 
 
                     search_output_child.push(search_elem); 
-                }   
+                }
             }
             
-            for (let i=0; i<50; i++) {
+            for (let i=0; i<SEARCH_DISPLAY_LIMIT; i++) {
                 document.getElementById('search_output')!.appendChild(search_output_child[i]); 
-            }
+            } search_output_displayed_cnt += SEARCH_DISPLAY_LIMIT; 
         }
     })
 }
 
-function add_search_results(data: any[]) {
-    console.log("reached add_search_results", search_output_child.length);
-    console.log(data.length) 
-    for (let i=51; i<search_output_child.length; i++) {
-        document.getElementById('search_output')!.appendChild(search_output_child[i]); 
-    }
+function add_search_results(_: any[]) {
+    document.addEventListener("scroll", () => {
+        for (let i=search_output_displayed_cnt; i<search_output_child.length; i++) {
+            document.getElementById('search_output')!.appendChild(search_output_child[i]); 
+        } 
+    })
 }
 
 Promise.resolve(table_data).then(populate_search); 
