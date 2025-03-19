@@ -117,12 +117,15 @@ function populate_search(data: any[]) {
 
 function add_search_results(_: any[]) {
     document.addEventListener("scroll", () => {
-        for (let i=search_output_displayed_cnt; i<search_output_child.length; i++) {
-            document.getElementById('search_output')!.appendChild(search_output_child[i]); 
-        } 
+        if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+            let temp_next_cnt: number = Math.min(search_output_child.length, search_output_displayed_cnt + 20); 
+            for (let i=search_output_displayed_cnt; i<temp_next_cnt; i++) {
+                document.getElementById('search_output')!.appendChild(search_output_child[i]); 
+            }
+            search_output_displayed_cnt = temp_next_cnt; 
+        }
     })
 }
 
 Promise.resolve(table_data).then(populate_search); 
-// TODO(kuugu): this is needs to get triggered when user scrolls down to the page end 
 Promise.resolve(table_data).then(add_search_results); 
