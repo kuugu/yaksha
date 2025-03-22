@@ -52,6 +52,11 @@ div.xbutton {
     display: none;
 }
 
+div.xbutton:hover {
+    cursor: pointer; 
+    color: black; 
+}
+
 div.search-bar-button input {
     color: black; 
     background-color: #91C788;
@@ -110,6 +115,3 @@ div.search_prasanga {
 div.search_elem:hover {
     box-shadow: 2px 2px 5px grey; /* offset-x, offset-y, blur-radius, spread-radius, color  */ 
 }
-
-h1 { font-family: Andale Mono, AndaleMono, monospace; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } 
-h3 { font-family: Andale Mono, AndaleMono, monospace; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } 
