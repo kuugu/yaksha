@@ -41,6 +41,7 @@ function populate_search(data: any[]) {
         if (search_text.length >= 2) {
             document.getElementById('search_output')!.replaceChildren(); 
             search_output_child = []; 
+            search_output_displayed_cnt = 0; 
 
             for (let i=0; i<data.length; i++) {
                 let search_match = false; 
