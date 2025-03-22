@@ -25,16 +25,12 @@ div.navbar {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #F9F7F7; 
-    color: black;   
-}
+    background-color: #52734D; 
+    color: white;   
 
-@media only screen and (min-width: 500px) {
-    div.navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-} 
+    position: sticky;
+    top: 0px; 
+}
 
 div.title {
     font-size: 40px;
@@ -45,14 +41,45 @@ div.search-bar-button {
     display: flex; 
     flex-direction: row;
     align-items: center; 
-    padding: 2px;
-    margin-left: 10px; 
+    padding: 5px;
+    margin-bottom: 5px;
+    background-color: #91C788; 
+    border-radius: 10px;
 }
 
 div.xbutton {
-    background-color: white;
     border: grey; 
+    display: none;
 }
+
+div.search-bar-button input {
+    color: black; 
+    background-color: #91C788;
+    border: none; 
+    outline: 0px;
+    font-size: 16px;
+}
+
+div.search-bar-button input:focus {
+    color: black; 
+    background-color: #91C788;
+    border: none; 
+}
+
+@media only screen and (min-width: 500px) {
+    div.navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    div.xbutton {
+        display: block;
+    }
+
+    div.search-bar-button {
+        margin-left: 10px; 
+    }
+} 
 
 svg {
     display: block;
@@ -62,24 +89,6 @@ svg {
     border-radius: 3px;
 }
 
-div.search-bar {
-    /* margin: 10px;
-    border: 2px black;
-    border-style: solid; 
-    border-radius: 10px;
-    padding: 10px; 
-    font-size: 20px;  */
-}
-
-#xbutton {
-    /* margin: 10px;
-    border: 2px black;
-    border-style: solid; 
-    border-radius: 10px;
-    padding: 10px; 
-    font-size: 25px; */
-  }
-
 div.search_elem {
     margin: 10px;
     padding: 10px; 
@@ -87,12 +96,12 @@ div.search_elem {
     border: 1px grey;
     border-style: solid; 
     border-radius: 10px;
-    background-color: #f4fafa;
+    background-color: #FEFFDE;
     /* height: 20px;  */
 }
 
 div.search_prasanga {
-    font-size: 20px; 
+    font-size: 16px; 
     font-weight: bold;
     overflow: hidden; 
     text-overflow: ellipsis;
