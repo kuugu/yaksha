@@ -13,6 +13,11 @@ body {
     min-width: 100vw;
 }
 
+@font-face {
+    font-family: NotoSansKannada;
+    src: url("fonts/NotoSansKannada-SemiBold.ttf");
+}
+
 div.navbar {
     border-bottom: 1px; 
     border-top: 0px; 
@@ -26,7 +31,7 @@ div.navbar {
     justify-content: center;
     align-items: center;
     background-color: white; 
-    /* color: white;    */
+    /* background-image: linear-gradient(, white); */
 
     position: sticky;
     top: 0px; 
@@ -37,6 +42,7 @@ div.title {
     margin-left: 15px;
     margin-top: 15px; 
     margin-bottom: 5px; 
+    font-family: NotoSansKannada;
 }
 
 div.search-bar-button {
@@ -45,7 +51,7 @@ div.search-bar-button {
     align-items: center; 
     padding: 5px;
 
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     
     border-radius: 10px;
     border: 1px; 
@@ -119,6 +125,6 @@ div.search_prasanga {
     }
 
     div.search_elem {
-        margin-left: 40px; 
+        margin-left: 25px; 
     }
 } 
