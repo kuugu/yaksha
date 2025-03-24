@@ -25,8 +25,8 @@ div.navbar {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #52734D; 
-    color: white;   
+    background-color: white; 
+    /* color: white;    */
 
     position: sticky;
     top: 0px; 
@@ -34,7 +34,8 @@ div.navbar {
 
 div.title {
     font-size: 40px;
-    margin-left: 5px; 
+    margin-left: 15px;
+    margin-top: 15px; 
     margin-bottom: 5px; 
 }
 
@@ -43,14 +44,20 @@ div.search-bar-button {
     flex-direction: row;
     align-items: center; 
     padding: 5px;
+
     margin-bottom: 5px;
-    background-color: #91C788; 
+    
     border-radius: 10px;
+    border: 1px; 
+    border-style: solid;
+    border-color: grey;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
 }
 
 div.xbutton {
     border: grey; 
     display: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 div.xbutton:hover {
@@ -60,7 +67,7 @@ div.xbutton:hover {
 
 div.search-bar-button input {
     color: black; 
-    background-color: #91C788;
+    /* background-color: #91C788; */
     border: none; 
     outline: 0px;
     font-size: 16px;
@@ -68,11 +75,36 @@ div.search-bar-button input {
 
 div.search-bar-button input:focus {
     color: black; 
-    background-color: #91C788;
+    /* background-color: #91C788; */
     border: none; 
 }
 
+div.search_elem {
+    margin: 10px;
+    padding: 10px; 
+    font-size: 14px; 
+    /* border: 1px grey;
+    border-style: solid; 
+    border-radius: 10px; 
+    background-color: #FEFFDE; */
+}
+
+div.search_prasanga {
+    font-size: 20px; 
+    font-weight: bold;
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}
+
+
 @media only screen and (min-width: 500px) {
+    /* option 1 */ 
+    div.navbar {
+        flex-direction: row;
+        justify-content: left;
+    }
+
+    /* option 2 */ 
     div.navbar {
         flex-direction: column;
         align-items: flex-start;
@@ -83,36 +115,10 @@ div.search-bar-button input:focus {
     }
 
     div.search-bar-button {
-        margin-left: 10px; 
+        margin-left: 25px; 
+    }
+
+    div.search_elem {
+        margin-left: 40px; 
     }
 } 
-
-svg {
-    display: block;
-    color: grey; 
-    border: 1px;
-    border-style: solid;
-    border-radius: 3px;
-}
-
-div.search_elem {
-    margin: 10px;
-    padding: 10px; 
-    /* width: 50%;  */
-    border: 1px grey;
-    border-style: solid; 
-    border-radius: 10px;
-    background-color: #FEFFDE;
-    /* height: 20px;  */
-}
-
-div.search_prasanga {
-    font-size: 16px; 
-    font-weight: bold;
-    overflow: hidden; 
-    text-overflow: ellipsis;
-}
-
-div.search_elem:hover {
-    box-shadow: 2px 2px 5px grey; /* offset-x, offset-y, blur-radius, spread-radius, color  */ 
-}
