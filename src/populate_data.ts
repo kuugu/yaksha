@@ -112,6 +112,10 @@ function populate_search(data: any[]) {
             for (let i=0; i<SEARCH_DISPLAY_LIMIT; i++) {
                 document.getElementById('search_output')!.appendChild(search_output_child[i]); 
             } search_output_displayed_cnt += SEARCH_DISPLAY_LIMIT; 
+        } else {
+            document.getElementById('search_output')!.replaceChildren(); 
+            search_output_child = []; 
+            search_output_displayed_cnt = 0; 
         }
     })
 }
