@@ -108,10 +108,10 @@ function populate_search(data: any[]) {
                     search_output_child.push(search_elem); 
                 }
             }
-            
-            for (let i=0; i<SEARCH_DISPLAY_LIMIT; i++) {
+            let temp_next_cnt = Math.min(SEARCH_DISPLAY_LIMIT, search_output_child.length); 
+            for (let i=0; i<temp_next_cnt; i++) {
                 document.getElementById('search_output')!.appendChild(search_output_child[i]); 
-            } search_output_displayed_cnt += SEARCH_DISPLAY_LIMIT; 
+            } search_output_displayed_cnt += temp_next_cnt; 
         } else {
             document.getElementById('search_output')!.replaceChildren(); 
             search_output_child = []; 
