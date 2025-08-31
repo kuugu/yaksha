@@ -1,24 +1,28 @@
-<!doctype html> 
+<!doctype html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" type="text/css" href="public/styles.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="public/styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
 
-    <body>
-        <div class="navbar">
-            <div class="title">ಪ್ರಸಂಗ ಪ್ರತಿ ಸಂಗ್ರಹ</div>
-            <!-- <div class="sub-title">ಮಹಿತಿಗಾಗಿ ಯಕ್ಷವಾಹಿನಿಗೆ ಧನ್ಯವಾದಗಳು</div> -->
-    
-            <div class="search-bar-button">
-                <input type="search" placeholder="ಇಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ.." id="search_bar" class="search-bar"></input>
-                <div id="xbutton" class="xbutton">x</div>
-            </div>
-        </div>
-        
-        <div id="search_output"></div>
+  <body>
+    <div class="navbar">
+      <div class="title">ಪ್ರಸಂಗ ಪ್ರತಿ ಸಂಗ್ರಹ</div>
 
-        <script type="module" src="src/populate_data.ts"></script>
-    </body>
+      <div class="search-bar-button">
+        <input
+          type="text"
+          placeholder="ಇಲ್ಲಿ ಟೈಪ್ ಮಾಡಿ.."
+          id="search_bar"
+          class="search-bar"
+        />
+        <div id="xbutton" class="xbutton">x</div>
+      </div>
+    </div>
+
+    <div id="search_output"></div>
+
+    <script type="module" src="src/populate_data.ts"></script>
+  </body>
 </html>
