@@ -29,6 +29,15 @@ body {
   font-family: "NotoSansKannada-Light";
 }
 
+a {
+  text-decoration: none;
+}
+
+hr {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
 div.navbar {
   border-bottom: 1px; 
   border-top: 0px; 
@@ -100,10 +109,6 @@ div.search_elem {
   margin: 10px;
   padding: 10px; 
   font-size: 14px;
-  /* border: 1px grey;
-  border-style: solid; 
-  border-radius: 10px; 
-  background-color: #FEFFDE; */
 }
 
 div.search_prasanga {
