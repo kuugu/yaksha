@@ -76,7 +76,7 @@ function populate_search(data: any[]) {
  
           let img = document.createElement('img');
           // img.class = 'fit-picture';
-          img.src = 'public/thumbnails/' + data[i]['prathifileid'] + '.png';
+          img.src = 'thumbnails/' + data[i]['prathifileid'] + '.png';
           // img.alt = 'thumbnail for' + data[i]['prasanga'];
          thumbnail.appendChild(img);
 

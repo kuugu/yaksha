@@ -105,6 +105,10 @@ div.search-bar-button input:focus {
   border: none; 
 }
 
+div.search_result {
+  display: flex;
+}
+
 div.search_elem {
   margin: 10px;
   padding: 10px; 
