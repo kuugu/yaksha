@@ -44,10 +44,10 @@ function populate_search(data: any[]) {
       search_output_displayed_cnt = 0; 
 
       for (let i=0; i<data.length; i++) {
+
         let search_match = false; 
 
         let search_match_contributor = data[i]['contributor'].indexOf(search_text);  
-        let search_match_dateadded = data[i]['dateadded'].indexOf(search_text); 
         let search_match_kavi = data[i]['kavi'].indexOf(search_text); 
         let search_match_prasanga = data[i]['prasanga'].indexOf(search_text); 
         let search_match_publisher = data[i]['publisher'].indexOf(search_text); 
@@ -57,7 +57,6 @@ function populate_search(data: any[]) {
         let search_match_publisher_en = data[i]['publisher_en'].indexOf(search_text); 
 
         search_match = ((search_match_contributor >= 0) 
-          || (search_match_dateadded >= 0)
           || (search_match_kavi >= 0)
           || (search_match_prasanga >= 0)
           || (search_match_publisher >= 0)
@@ -68,10 +67,23 @@ function populate_search(data: any[]) {
         ); 
 
         if (search_match) {
+          let search_result = document.createElement('div');
+          search_result.className = 'search_result';
+
+          // thumbnail
+          let thumbnail = document.createElement('div');
+          thumbnail.className = 'search_thumbnail';
+ 
+          let img = document.createElement('img');
+          // img.class = 'fit-picture';
+          img.src = 'public/thumbnails/' + data[i]['prathifileid'] + '.png';
+          // img.alt = 'thumbnail for' + data[i]['prasanga'];
+         thumbnail.appendChild(img);
+
+          search_result.appendChild(thumbnail);
+
           let search_elem = document.createElement('div'); 
           search_elem.className = 'search_elem';  
-
-          // construct the search output 
 
           // prasanga 
           let prasanga = document.createElement('div'); 
@@ -104,8 +116,10 @@ function populate_search(data: any[]) {
           contributor.textContent = 'ಕೊಡುಗೆದಾರ: ';
           contributor.textContent += data[i]['contributor']; 
           search_elem.appendChild(contributor); 
-          
-          search_output_child.push(search_elem);
+
+          search_result.appendChild(search_elem);
+
+          search_output_child.push(search_result);
           search_output_child.push(document.createElement('hr'));
         }
       }
