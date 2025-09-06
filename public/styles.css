@@ -105,6 +105,19 @@ div.search-bar-button input:focus {
   border: none; 
 }
 
+div.search_thumbnail {
+  /* background-color: black; */
+  width: 130px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+}
+
+img.thumbnail_img {
+  border-radius: 3px;
+}
+
 div.search_result {
   display: flex;
 }
@@ -138,8 +151,4 @@ div.search_prasanga {
   div.search-bar-button {
     margin-left: 25px; 
   }
-
-  div.search_elem {
-    margin-left: 25px; 
-  }
-} 
+}
