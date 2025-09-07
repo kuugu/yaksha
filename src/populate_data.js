@@ -40,7 +40,6 @@ function get_match_indices(data, search_text) {
 
     if (search_match) {
       output.push(i);
-      console.log(search_text, data[i]["id"], search_match_publisher_en);
     }
   }
   return output;
@@ -57,9 +56,6 @@ function add_search_results_to_dom_object(search_output, search_state) {
   // i is the indirection again to the search_state.data array 
   for (let j=low; j<high; j++) {
     let i = search_state.current_search_match_indices[j];
-    if (data[i]["id"] == "PR00034") {
-      console.log(">>>", i, low, high);
-    }
     let search_result = document.createElement('div');
     search_result.className = 'search_result';
 
@@ -67,10 +63,13 @@ function add_search_results_to_dom_object(search_output, search_state) {
     let thumbnail = document.createElement('div');
     thumbnail.className = 'search_thumbnail';
 
+    let tag_a = document.createElement('a');
+    tag_a.href = data[i]['prathilink'];
     let img = document.createElement('img');
     img.className = 'thumbnail_img';
     img.src = 'thumbnails/' + data[i]['prathifileid'] + '.png';
-    thumbnail.appendChild(img);
+    tag_a.appendChild(img);
+    thumbnail.appendChild(tag_a)
 
     search_result.appendChild(thumbnail);
 
@@ -80,14 +79,7 @@ function add_search_results_to_dom_object(search_output, search_state) {
     // prasanga 
     let prasanga = document.createElement('div'); 
     prasanga.className = 'search_prasanga';
-    if (data[i]['prathi_fileid'] != '') {
-      let tag_a = document.createElement('a');
-      tag_a.href = data[i]['prathilink'];
-      tag_a.textContent = data[i]['prasanga'];
-      prasanga.appendChild(tag_a); 
-    } else {
-      prasanga.textContent = data[i]['prasanga']; 
-    }
+    prasanga.textContent = data[i]['prasanga'];
     search_elem.appendChild(prasanga); 
 
     // kavi 
@@ -163,8 +155,6 @@ function main(data) {
     search_state.to_be_rendered_from = 0;
     document.getElementById("search_bar").value = "";
     document.getElementById('search_output').replaceChildren();
-
-    console.log(document.getElementById("search_output"));
   });
 }
 
