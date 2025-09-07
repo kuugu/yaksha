@@ -136,6 +136,11 @@ div.search_prasanga {
   text-overflow: ellipsis;
 }
 
+div.search_prasanga_id {
+  font-style: italic;
+  font-size: 12px;
+}
+
 @media only screen and (min-width: 500px) {
   /* option 1 */
   div.navbar {

@@ -75,6 +75,12 @@ function add_search_results_to_dom_object(search_output, search_state) {
 
     let search_elem = document.createElement('div'); 
     search_elem.className = 'search_elem';  
+    
+    // id 
+    let prasanga_id = document.createElement('div');
+    prasanga_id.className = 'search_prasanga_id';
+    prasanga_id.textContent = '#'+data[i]['id'];
+    search_elem.appendChild(prasanga_id);
 
     // prasanga 
     let prasanga = document.createElement('div'); 
@@ -121,7 +127,7 @@ function main(data) {
 
   const search_bar = document.getElementById("search_bar");
   search_bar.addEventListener("input", () => {
-    const search_text = search_bar.value.toLowerCase();
+    const search_text = search_bar.value.trim().toLowerCase();
 
     if (search_text.length >= 2) {
       search_state.current_search_match_indices = [];
