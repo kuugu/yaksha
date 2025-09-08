@@ -64,6 +64,7 @@ function add_search_results_to_dom_object(search_output, search_state) {
     thumbnail.className = 'search_thumbnail';
 
     let tag_a = document.createElement('a');
+    tag_a.classname = 'thumbnail_link';
     tag_a.href = data[i]['prathilink'];
     let img = document.createElement('img');
     img.className = 'thumbnail_img';

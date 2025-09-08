@@ -116,6 +116,7 @@ div.search_thumbnail {
 
 img.thumbnail_img {
   border-radius: 3px;
+  display: block;
 }
 
 div.search_result {
