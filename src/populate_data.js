@@ -27,6 +27,9 @@ function get_match_indices(data, search_text) {
     let search_match_kavi_en = data[i]['kavi_en'].indexOf(search_text);
     let search_match_prathi_en = data[i]['prathi_en'].indexOf(search_text);
     let search_match_publisher_en = data[i]['publisher_en'].indexOf(search_text);
+    let search_match_prasangas = data[i]['prasangas'].indexOf(search_text);
+    let search_match_prasangas_en = data[i]['prasangas_en'].indexOf(search_text);
+
 
     search_match = ((search_match_contributor >= 0)
       || (search_match_kavi >= 0)
@@ -36,6 +39,8 @@ function get_match_indices(data, search_text) {
       || (search_match_kavi_en >= 0)
       || (search_match_prathi_en >= 0)
       || (search_match_publisher_en >= 0)
+      || (search_match_prasangas >= 0)
+      || (search_match_prasangas_en >= 0)
     );
 
     if (search_match) {
