@@ -129,7 +129,7 @@ div.search_elem {
   font-size: 14px;
 }
 
-div.search_prasanga {
+div.search_prathi {
   padding-bottom: 5px;
   font-size: 20px;
   font-weight: semibold;
@@ -137,7 +137,7 @@ div.search_prasanga {
   text-overflow: ellipsis;
 }
 
-div.search_prasanga_id {
+div.search_prathi_id {
   font-style: italic;
   font-size: 12px;
 }

@@ -1,8 +1,8 @@
 const SEARCH_ITEMS_PER_PAGE = 20;
 
-// load data from json 
+// load data from json
 async function get_data_from_json(file_name) {
-  let json = null; 
+  let json = null;
 
   try {
     const response = await fetch(file_name);
@@ -19,22 +19,22 @@ function get_match_indices(data, search_text) {
   for (let i=0; i<data.length; i++) {
     let search_match = false;
 
-    let search_match_contributor = data[i]['contributor'].indexOf(search_text);  
-    let search_match_kavi = data[i]['kavi'].indexOf(search_text); 
-    let search_match_prasanga = data[i]['prasanga'].indexOf(search_text); 
-    let search_match_publisher = data[i]['publisher'].indexOf(search_text); 
-    let search_match_contributor_en = data[i]['contributor_en'].indexOf(search_text); 
-    let search_match_kavi_en = data[i]['kavi_en'].indexOf(search_text); 
-    let search_match_prasanga_en = data[i]['prasanga_en'].indexOf(search_text); 
-    let search_match_publisher_en = data[i]['publisher_en'].indexOf(search_text); 
+    let search_match_contributor = data[i]['contributor'].indexOf(search_text);
+    let search_match_kavi = data[i]['kavi'].indexOf(search_text);
+    let search_match_prathi = data[i]['prathi'].indexOf(search_text);
+    let search_match_publisher = data[i]['publisher'].indexOf(search_text);
+    let search_match_contributor_en = data[i]['contributor_en'].indexOf(search_text);
+    let search_match_kavi_en = data[i]['kavi_en'].indexOf(search_text);
+    let search_match_prathi_en = data[i]['prathi_en'].indexOf(search_text);
+    let search_match_publisher_en = data[i]['publisher_en'].indexOf(search_text);
 
-    search_match = ((search_match_contributor >= 0) 
+    search_match = ((search_match_contributor >= 0)
       || (search_match_kavi >= 0)
-      || (search_match_prasanga >= 0)
+      || (search_match_prathi >= 0)
       || (search_match_publisher >= 0)
       || (search_match_contributor_en >= 0)
       || (search_match_kavi_en >= 0)
-      || (search_match_prasanga_en >= 0)
+      || (search_match_prathi_en >= 0)
       || (search_match_publisher_en >= 0)
     );
 
@@ -48,12 +48,12 @@ function get_match_indices(data, search_text) {
 // add search results to DOM so that the browser renders them
 function add_search_results_to_dom_object(search_output, search_state) {
   let low = search_state.to_be_rendered_from;
-  let high = low + Math.min(20, 
+  let high = low + Math.min(20,
     search_state.current_search_match_indices.length - low);
   let data = search_state.data;
 
   // NOTE(kuugu): j is the index of current_search_match_indices
-  // i is the indirection again to the search_state.data array 
+  // i is the indirection again to the search_state.data array
   for (let j=low; j<high; j++) {
     let i = search_state.current_search_match_indices[j];
     let search_result = document.createElement('div');
@@ -74,39 +74,39 @@ function add_search_results_to_dom_object(search_output, search_state) {
 
     search_result.appendChild(thumbnail);
 
-    let search_elem = document.createElement('div'); 
-    search_elem.className = 'search_elem';  
-    
-    // id 
-    let prasanga_id = document.createElement('div');
-    prasanga_id.className = 'search_prasanga_id';
-    prasanga_id.textContent = '#'+data[i]['id'];
-    search_elem.appendChild(prasanga_id);
+    let search_elem = document.createElement('div');
+    search_elem.className = 'search_elem';
 
-    // prasanga 
-    let prasanga = document.createElement('div'); 
-    prasanga.className = 'search_prasanga';
-    prasanga.textContent = data[i]['prasanga'];
-    search_elem.appendChild(prasanga); 
+    // id
+    let prathi_id = document.createElement('div');
+    prathi_id.className = 'search_prathi_id';
+    prathi_id.textContent = '#'+data[i]['id'];
+    search_elem.appendChild(prathi_id);
 
-    // kavi 
-    let kavi = document.createElement('div'); 
-    kavi.className = 'search_kavi'; 
+    // prathi
+    let prathi = document.createElement('div');
+    prathi.className = 'search_prathi';
+    prathi.textContent = data[i]['prathi'];
+    search_elem.appendChild(prathi);
+
+    // kavi
+    let kavi = document.createElement('div');
+    kavi.className = 'search_kavi';
     kavi.textContent = 'ಕವಿ: ';
-    kavi.textContent += data[i]['kavi']; 
-    search_elem.appendChild(kavi); 
+    kavi.textContent += data[i]['kavi'];
+    search_elem.appendChild(kavi);
 
-    // publisher 
-    let publisher = document.createElement('div'); 
+    // publisher
+    let publisher = document.createElement('div');
     publisher.textContent = 'ಪ್ರಕಾಶಕರು: ';
-    publisher.textContent += data[i]['publisher']; 
-    search_elem.appendChild(publisher); 
+    publisher.textContent += data[i]['publisher'];
+    search_elem.appendChild(publisher);
 
-    // contributor 
-    let contributor = document.createElement('div'); 
+    // contributor
+    let contributor = document.createElement('div');
     contributor.textContent = 'ಕೊಡುಗೆದಾರ: ';
-    contributor.textContent += data[i]['contributor']; 
-    search_elem.appendChild(contributor); 
+    contributor.textContent += data[i]['contributor'];
+    search_elem.appendChild(contributor);
 
     search_result.appendChild(search_elem);
 
@@ -135,12 +135,12 @@ function main(data) {
       search_state.to_be_rendered_from = 0;
       document.getElementById('search_output').replaceChildren();
 
-      search_state.current_search_match_indices = 
+      search_state.current_search_match_indices =
         get_match_indices(search_state.data, search_text);
 
       add_search_results_to_dom_object(
-        document.getElementById("search_output"), 
-        search_state 
+        document.getElementById("search_output"),
+        search_state
       );
     }
   })
